@@ -1,0 +1,29 @@
+Instructions for Homework2
+Supermarket Simulation with GUI and OOP
+In this homework, you will design a Java application using basic Java-GUI, that simulates a check-out of a supermarket
+
+Classes structure: 
+
+You need to implement five different classes:
+
+Customer:  this class will represent the coming customers:
+Your class should assign a unique id to each customer object. The value of the Id should be incremented by one when you instantiate an object of the class;
+should have a constructor that one argument which is int arrivalTime. It is the time the customer entered into the queue.
+Cashier : this class will represent the cashier who services the customers
+It can serve only one customer at a time
+It decides the service time of the customer
+Maintains statistics:  
+average service time of customers
+updates it after every customer is serviced.
+CustomerQueue: this class represents the waiting line.  
+it should have enqueue and dequeue methods to be called by the simulation logic of your program. Use LinkedList to store customers in a FIFO  style, to implements enqueue/dequeue operations
+Maintains statistics:  
+Maximum number of customers at the check-out line (max queue length)
+Longest wait time (experienced by anyone customer)
+Average waiting time of customers
+statistics should be updated during the simulation (that is, at any time, the current statistics can be queried.
+SimulationFrame: this is the class that extends from JFrame
+responsible for GUI interaction
+has simulation logic
+the simulation is driven by Timer events. Please see the link for more description. There will be no while loops, you'll solve the problem using the timer instead. This timer uses milliseconds and can be set by the user using GUI.
+SimulationApp: this class contains the main method

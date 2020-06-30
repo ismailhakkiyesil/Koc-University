@@ -1,0 +1,55 @@
+Instructions for Homework1
+Supermarket Simulation
+In this homework, you will write a C program that simulates  a check-out of a  supermarket. You will also run your program to perform analysis of the waiting times at the check-out.
+In a supermarket, the check-out line is a queue. Customers arrive at the check-out line  in random  intervals.  If the cashier is busy (that is, serving a customer), the arriving customer enters the check-out queue and wait for his/her turn. When the cashier is free, the next customer from the beginning of the queue is served.
+Customers arrive in random integer intervals between 1 and max_arrival_time minutes. Also, each customer is serviced in random integer intervals of 1 to max_service_time minutes. Obviously, the rates need to be balanced. If the average arrival rate is larger than the average service rate, the queue will grow infinitely. Even with balanced rates, randomness can still cause long lines. 
+The simulations will be performed as follows: 
+Choose a random integer between 1 and max_arrival_time to determine the minute at which the first customer arrives.
+At the first customer’s arrival time:
+Determine customer’s service time (random integer from 1 to max_service_time);
+Begin servicing the customer;
+Schedule arrival time of next customer (random integer 1 to max_arrival_time added to the current time).
+For each minute of the day:
+If the next customer arrives,
+Say so;
+Enqueue the customer; (inserting  into a queue is usually called “enqueue”).
+Schedule the arrival time of the next customer (random integer 1 to max_arrival_time added to the current time).
+If service was completed for the last customer, 
+Say so;
+Dequeue next customer to be serviced; (deleting form a queue)
+Determine customer’s service completion time (random integer from 1 to max_service-time  added to the current time).
+Your program will read the following input from the user:
+max_arrival_time
+max_service_time
+simulation_time 
+Your program’s purpose is not only to simulate but also to collect some statistics:
+Maximum number of customers at the check-out line (max queue length)
+Longest wait time any one customer experienced
+Average waiting time of customers (i.e waiting time is the time spent in the queue).
+Average service time  
+Average arrival interval (i.e., average of inter-arrival times)
+Implementation: 
+Queue Data Structure:
+The queue data structure will be given to you. The queue is simply a list where insertions are performed at the end of list (tail) which is called “enqueue”, deletions are done from the beginning of the list (head) which is called “dequeue”. 
+We provide a queue implementation.  The queue data structure is a linked-list based implementation. Inspect the code before using it (queue.h and queue.c files). It maintains two references, one for the head of the queue, the other is the tail of the queue. In addition, each queue node contains a (void *) field as data. This provides reuse. For example, if you want to implement a queue of students, you would define a student structure:
+struct student {
+      char name[20];
+      int  ID;
+}
+Define  pointers to the head and tail nodes:
+QueueNodePtr headPtr = NULL; // initialize headPtr
+QueueNodePtr tailPtr = NULL; // initialize tailPtr
+Then you can the queue to enqueue/dequeue students.  For example, to enqueu a student:
+// allocate a student record
+struct student *s = (struct student *)  malloc (sizeof(struct student));
+// fill student infor
+s->ID = … 
+s->name = …
+enqueue(&headPtr, &tailPtr, s);
+or dequeue as:
+s = (struct student *) dequeue(&headPtr, &tailPtr);
+Folder structure of your program 
+You program files should be organized as follows:
+src: main folder that contains the two subfolders
+src/queue: put the provided queue implementation queue.h and queue.c here.
+src/simulation: will contain your main program (named as smsim.c). Your main program contains all the data and function definitions to perform the simulation. It uses the provided  queue data structure to enqueue/dequeue customers. It will include queue.h to use the provided queue functions.  
